@@ -1,0 +1,12 @@
+html{
+    height: 100%;
+}
+body.signin{
+    height: auto;
+    background: url(../images/login-background.jpg) no-repeat center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    color:rgba(255,255,255,.95)
+}

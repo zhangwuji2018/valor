@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.valor.web.dao.Userdao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.db.valor.web.entity.User">
+        <id column="USER_ID" property="userId" />
+        <result column="USERNAME" property="username" />
+        <result column="PASSWORD" property="password" />
+        <result column="DEPT_ID" property="deptId" />
+        <result column="EMAIL" property="email" />
+        <result column="MOBILE" property="mobile" />
+        <result column="STATUS" property="status" />
+        <result column="CRATE_TIME" property="crateTime" />
+        <result column="MODIFY_TIME" property="modifyTime" />
+        <result column="LAST_LOGIN_TIME" property="lastLoginTime" />
+        <result column="SSEX" property="ssex" />
+        <result column="THEME" property="theme" />
+        <result column="AVATAR" property="avatar" />
+        <result column="DESCRIPTION" property="description" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        USER_ID, USERNAME, PASSWORD, DEPT_ID, EMAIL, MOBILE, STATUS, CRATE_TIME, MODIFY_TIME, LAST_LOGIN_TIME, SSEX, THEME, AVATAR, DESCRIPTION
+    </sql>
+
+</mapper>
