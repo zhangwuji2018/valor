@@ -8,5 +8,10 @@ body.signin{
     -moz-background-size:cover;
     -o-background-size:cover;
     background-size:cover;
-    color:rgba(255,255,255,.95)
+}
+.login-form{
+    margin-top: 20px;
+}
+.remember{
+    margin-top: 10px;
 }

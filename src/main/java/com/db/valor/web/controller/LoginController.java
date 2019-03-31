@@ -1,7 +1,7 @@
 package com.db.valor.web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * <p>
@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author daibing
  * @since 2019/3/29
  */
-@RequestMapping("/admin")
 @Controller
 public class LoginController {
 
-    @RequestMapping("")
+    @GetMapping("/login")
     public String login(){
         return "login";
     }

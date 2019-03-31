@@ -1,22 +1,75 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>valor权限管理系统</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/plugins/Ionicons/css/ionicons.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/plugins/adminLte/css/AdminLTE.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/plugins/iCheck/square/blue.css}">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
-    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
-    <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
 </head>
-<body class="signin">
-    <div class="container">
-        <div>
-
-        </div>
-
+<body class="hold-transition login-page signin">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>Valor</b></a>
     </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg"><b>账号登录</b></p>
+        <form class="login-form">
+            <div class="form-group has-feedback">
+                <input name="username" type="text" class="form-control " placeholder="用户名">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input name="password" type="password" class="form-control " placeholder="密码">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="text" name="validateCode" class="form-control fa-code" placeholder="验证码" maxlength="5" autocomplete="off">
+                </div>
+                <div class="col-xs-6">
+                    <a href="javascript:void(0);" title="点击更换验证码">
+                        <img th:src="@{/kaptcha/render}" id="imgCode"  width="85%"/>
+                    </a>
+                </div>
+            </div>
+            <div class="row remember">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input name="rememberMe" type="checkbox">&nbsp;&nbsp;&nbsp;记住我
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button id="login-btn" type="button" class="btn btn-primary btn-block btn-flat">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+        <!-- /.social-auth-links -->
+        <a href="#">忘记密码</a><br>
+        <a href="#" >注册</a>
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+<script th:inline="javascript"> var ctx = [[@{/}]]</script>
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
+<script th:src="@{/plugins/layer/layer.js}"></script>
+<script th:src="@{/js/login.js}"></script>
 </body>
 </html>
