@@ -8,7 +8,6 @@ import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.io.ResourceUtils;
-import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -64,6 +63,12 @@ public class ShiroConfig {
      */
     @Value("${shiro.user.loginUrl}")
     private String loginUrl;
+
+    /**
+     * 首页
+     */
+    @Value("${shiro.user.indexUrl}")
+    private String indexUrl;
 
     /**
      * 权限认证失败地址
@@ -192,7 +197,7 @@ public class ShiroConfig {
         // 配置shiro的过滤链
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 对静态资源设置匿名访问
-        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/favicon.ico/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");

@@ -77,8 +77,13 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 # 验证码配置
 kaptcha:
+  content:
+    space: 10
   font:
-    color: red
+    color: black
+  border:
+    enabled: false
+
 # shiro配置
 shiro:
   user:

@@ -15,19 +15,19 @@ $(function () {
         var validateCode = $("input[name='validateCode']").val().trim();
         var rememberMe = $("input[name='rememberMe']").is(':checked');
         if (username === "") {
-            layer.alert("请输入用户名！",{icon:2});
+            layer.alert("请输入用户名！",{icon:5});
             return false;
         }
         if (password === "") {
-            layer.alert("请输入密码！",{icon:2});
+            layer.alert("请输入密码！",{icon:5});
             return false;
         }
         if (validateCode === "") {
-            layer.alert("请输入验证码！",{icon:2});
+            layer.alert("请输入验证码！",{icon:5});
             return false;
         }
         $.ajax({
-            url: ctx + "/login",
+            url: ctx + "login",
             type: "post",
             data:{
                 "username" : username,
@@ -38,11 +38,11 @@ $(function () {
             dataType: "json",
             success: function (data) {
                 if (data.code === 1) {
-                    location.href = ctx + "/index";
+                    location.href = ctx + "index";
                 } else {
                     var url = ctx + "kaptcha/render?data=" +Math.random();
                     $("#imgCode").attr("src",url);
-                    layer.alert(data.msg,{icon:2})
+                    layer.alert(data.msg,{icon:5})
                 }
             }
         });
