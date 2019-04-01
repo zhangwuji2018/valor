@@ -46,6 +46,12 @@ public class User extends Model<User> {
     private String password;
 
     /**
+     * 盐值
+     */
+    @TableField("SALT")
+    private String salt;
+
+    /**
      * 部门ID
      */
     @TableField("DEPT_ID")

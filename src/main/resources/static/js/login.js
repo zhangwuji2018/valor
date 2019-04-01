@@ -4,6 +4,7 @@ $(function () {
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' /* optional */
     });
+
     $("#imgCode").click(function () {
         var url = ctx + "kaptcha/render?data=" +Math.random();
         $("#imgCode").attr("src",url)
@@ -25,5 +26,25 @@ $(function () {
             layer.alert("请输入验证码！",{icon:2});
             return false;
         }
+        $.ajax({
+            url: ctx + "/login",
+            type: "post",
+            data:{
+                "username" : username,
+                "password" : password,
+                "validateCode" : validateCode,
+                "rememberMe" : rememberMe
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.code === 1) {
+                    location.href = ctx + "/index";
+                } else {
+                    var url = ctx + "kaptcha/render?data=" +Math.random();
+                    $("#imgCode").attr("src",url);
+                    layer.alert(data.msg,{icon:2})
+                }
+            }
+        });
     });
 });

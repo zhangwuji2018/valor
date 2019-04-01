@@ -2,12 +2,16 @@ package com.db.valor;
 
 import com.db.valor.web.dao.Userdao;
 import com.db.valor.web.entity.User;
+import org.apache.shiro.codec.Base64;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,5 +47,16 @@ public class EncryptTest extends ValorApplicationTests{
     public void testSelectUser() {
         List<User> users = userdao.selectList(null);
         System.out.println(users);
+    }
+
+    @Test
+    public void testShiroEncrypt() throws Exception {
+        String s = new SimpleHash("SHA-1", "1234", "valor", 1024).toString();
+        //System.out.println(s);
+        //410d5d47a713efa3309558200d8208c6526e8dde
+        byte[] decode = Base64.decode("4AvVhmFLUs0KTA3Kprsdag==");
+
+        String s1 = new String(decode,"UTF-8");
+        System.out.println(s1);
     }
 }
