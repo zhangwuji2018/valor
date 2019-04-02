@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户信息表
+ * 角色信息表
  * </p>
  *
  * @author daibing
@@ -21,69 +21,39 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_user")
-public class User extends Model<User> {
+@TableName("sys_role")
+public class Role extends Model<Role> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * 角色ID
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Long userId;
+    @TableId(value = "role_id", type = IdType.AUTO)
+    private Long roleId;
 
     /**
-     * 部门ID
+     * 角色名称
      */
-    private Long deptId;
+    private String roleName;
 
     /**
-     * 登录账号
+     * 角色权限字符串
      */
-    private String loginName;
+    private String roleKey;
 
     /**
-     * 用户昵称
+     * 显示顺序
      */
-    private String userName;
+    private Integer roleSort;
 
     /**
-     * 用户类型（00系统用户）
+     * 数据范围（1：全部数据权限 2：自定数据权限）
      */
-    private String userType;
+    private String dataScope;
 
     /**
-     * 用户邮箱
-     */
-    private String email;
-
-    /**
-     * 手机号码
-     */
-    private String phonenumber;
-
-    /**
-     * 用户性别（0男 1女 2未知）
-     */
-    private String sex;
-
-    /**
-     * 头像路径
-     */
-    private String avatar;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 盐加密
-     */
-    private String salt;
-
-    /**
-     * 帐号状态（0正常 1停用）
+     * 角色状态（0正常 1停用）
      */
     private String status;
 
@@ -91,16 +61,6 @@ public class User extends Model<User> {
      * 删除标志（0代表存在 2代表删除）
      */
     private String delFlag;
-
-    /**
-     * 最后登陆IP
-     */
-    private String loginIp;
-
-    /**
-     * 最后登陆时间
-     */
-    private LocalDateTime loginDate;
 
     /**
      * 创建者
@@ -130,7 +90,7 @@ public class User extends Model<User> {
 
     @Override
     protected Serializable pkVal() {
-        return this.userId;
+        return this.roleId;
     }
 
 }

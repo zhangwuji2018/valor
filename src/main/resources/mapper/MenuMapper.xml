@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.valor.web.dao.Menudao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.db.valor.web.entity.Menu">
+        <id column="menu_id" property="menuId" />
+        <result column="menu_name" property="menuName" />
+        <result column="parent_id" property="parentId" />
+        <result column="order_num" property="orderNum" />
+        <result column="url" property="url" />
+        <result column="menu_type" property="menuType" />
+        <result column="visible" property="visible" />
+        <result column="perms" property="perms" />
+        <result column="icon" property="icon" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        sm.menu_id, sm.menu_name, sm.parent_id, sm.order_num, sm.url, sm.menu_type,
+        sm.visible, sm.perms, sm.icon, sm.create_by, sm.create_time, sm.update_by, sm.update_time,sm.remark
+    </sql>
+    <select id="getMenusByUserId" resultType="com.db.valor.web.entity.Menu">
+      select
+       <include refid="Base_Column_List"/>
+       from sys_user_role sur join sys_role_menu srm on sur.role_id=srm.role_id join sys_menu sm on srm.menu_id=sm.menu_id
+      where sur.user_id = #{userId}
+    </select>
+
+</mapper>

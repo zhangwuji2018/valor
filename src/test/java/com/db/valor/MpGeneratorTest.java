@@ -44,9 +44,9 @@ public class MpGeneratorTest {
         mpg.setGlobalConfig(gc);
 
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[] { "t_" });// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude("t_user"); // 需要生成的表
+        strategy.setInclude("sys_user","sys_role","sys_menu"); // 需要生成的表
         strategy.setEntityLombokModel(true);
         mpg.setStrategy(strategy);
 

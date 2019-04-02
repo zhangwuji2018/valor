@@ -48,3 +48,17 @@ $(function () {
         });
     });
 });
+
+function keyupSearch(e) {
+    // 兼容FF和IE和Opera
+    var theEvent = e || window.event;
+    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+    if (code == 13) {
+        // alert('回车');//具体处理函数
+        $("#login-btn").click();
+        return false;
+    }
+    return true;
+}
+
+document.onkeyup = keyupSearch;

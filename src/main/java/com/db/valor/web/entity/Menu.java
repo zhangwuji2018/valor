@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 用户信息表
+ * 菜单权限表
  * </p>
  *
  * @author daibing
@@ -21,86 +21,56 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("sys_user")
-public class User extends Model<User> {
+@TableName("sys_menu")
+public class Menu extends Model<Menu> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * 菜单ID
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Long userId;
+    @TableId(value = "menu_id", type = IdType.AUTO)
+    private Long menuId;
 
     /**
-     * 部门ID
+     * 菜单名称
      */
-    private Long deptId;
+    private String menuName;
 
     /**
-     * 登录账号
+     * 父菜单ID
      */
-    private String loginName;
+    private Long parentId;
 
     /**
-     * 用户昵称
+     * 显示顺序
      */
-    private String userName;
+    private Integer orderNum;
 
     /**
-     * 用户类型（00系统用户）
+     * 请求地址
      */
-    private String userType;
+    private String url;
 
     /**
-     * 用户邮箱
+     * 菜单类型（M目录 C菜单 F按钮）
      */
-    private String email;
+    private String menuType;
 
     /**
-     * 手机号码
+     * 菜单状态（0显示 1隐藏）
      */
-    private String phonenumber;
+    private String visible;
 
     /**
-     * 用户性别（0男 1女 2未知）
+     * 权限标识
      */
-    private String sex;
+    private String perms;
 
     /**
-     * 头像路径
+     * 菜单图标
      */
-    private String avatar;
-
-    /**
-     * 密码
-     */
-    private String password;
-
-    /**
-     * 盐加密
-     */
-    private String salt;
-
-    /**
-     * 帐号状态（0正常 1停用）
-     */
-    private String status;
-
-    /**
-     * 删除标志（0代表存在 2代表删除）
-     */
-    private String delFlag;
-
-    /**
-     * 最后登陆IP
-     */
-    private String loginIp;
-
-    /**
-     * 最后登陆时间
-     */
-    private LocalDateTime loginDate;
+    private String icon;
 
     /**
      * 创建者
@@ -130,7 +100,7 @@ public class User extends Model<User> {
 
     @Override
     protected Serializable pkVal() {
-        return this.userId;
+        return this.menuId;
     }
 
 }

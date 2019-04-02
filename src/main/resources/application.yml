@@ -65,6 +65,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  devtools:
+    restart:
+      enabled: true
+  cache:
+    type: simple
 # jasypt加密配置
 jasypt:
   encryptor:
@@ -75,6 +80,7 @@ mybatis-plus:
     banner: false
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
 # 验证码配置
 kaptcha:
   content:
@@ -83,7 +89,6 @@ kaptcha:
     color: black
   border:
     enabled: false
-
 # shiro配置
 shiro:
   user:
