@@ -1,6 +1,8 @@
 package com.db.valor.system.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.db.valor.system.shiro.realm.UserRealm;
+import com.db.valor.system.shiro.session.OnlineSessionFactory;
 import net.sf.ehcache.CacheManager;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -14,6 +16,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -76,6 +79,11 @@ public class ShiroConfig {
     @Value("${shiro.user.unauthorizedUrl}")
     private String unauthorizedUrl;
 
+    /**
+     * Session超时时间，单位为毫秒（默认30分钟）
+     */
+    @Value("${shiro.session.expireTime}")
+    private int expireTime;
     /**
      * 配置缓存管理器，将EhCache的管理器交给shiro
      * @return EhCacheManager
@@ -156,6 +164,31 @@ public class ShiroConfig {
     }
 
     /**
+     * 自定义会话工厂
+     * @return
+     */
+    @Bean
+    public OnlineSessionFactory sessionFactory() {
+        return new OnlineSessionFactory();
+    }
+
+    /**
+     * 添加session管理器
+     * @return
+     */
+    @Bean
+    public DefaultWebSessionManager sessionManager() {
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        // 设置全局的超时时间(毫秒)
+        sessionManager.setGlobalSessionTimeout(expireTime * 60 * 1000);
+        // 去掉 JSESSIONID
+        sessionManager.setSessionIdUrlRewritingEnabled(false);
+        // 自定义sessionFactory
+        sessionManager.setSessionFactory(sessionFactory());
+        return sessionManager;
+    }
+
+    /**
      * 安全管理器（核心）
      * @return SecurityManager
      */
@@ -165,6 +198,7 @@ public class ShiroConfig {
         securityManager.setRealm(userRealm());
         securityManager.setCacheManager(ehCacheManager());
         securityManager.setRememberMeManager(cookieRememberMeManager());
+        securityManager.setSessionManager(sessionManager());
         return securityManager;
     }
 
@@ -178,6 +212,15 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
         advisor.setSecurityManager(securityManager);
         return advisor;
+    }
+
+    /***
+     * 为了在thymeleaf引擎中使用shiro的标签bean
+     * @return
+     */
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
     /**

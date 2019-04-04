@@ -19,6 +19,7 @@
         <mybatisplus.version>3.1.0</mybatisplus.version>
         <druid.version>1.1.14</druid.version>
         <shiro.version>1.4.0</shiro.version>
+        <bitwalker.version>1.19</bitwalker.version>
     </properties>
 
     <dependencies>
@@ -112,6 +113,12 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
+        </dependency>
+        <!-- 解析客户端操作系统、浏览器等 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>${bitwalker.version}</version>
         </dependency>
     </dependencies>
 
