@@ -1,6 +1,6 @@
-package com.db.valor.common;
+package com.db.valor.utils;
 
-import com.db.valor.common.enums.ResultCodeEnum;
+import com.db.valor.enums.ResultCodeEnum;
 
 import java.util.HashMap;
 

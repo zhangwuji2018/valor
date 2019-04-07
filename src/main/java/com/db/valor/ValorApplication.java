@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * 项目启动类
@@ -16,7 +14,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 @Slf4j
 @MapperScan("com.db.valor.*.dao")
 @SpringBootApplication
-@EnableCaching
 public class ValorApplication {
 
     public static void main(String[] args) {

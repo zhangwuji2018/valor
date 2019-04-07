@@ -1,4 +1,4 @@
-package com.db.valor.common.enums;
+package com.db.valor.enums;
 
 /**
  * <p>

@@ -1,4 +1,4 @@
-package com.db.valor.web.controller;
+package com.db.valor.controller;
 
 import com.baomidou.kaptcha.Kaptcha;
 import org.springframework.beans.factory.annotation.Autowired;

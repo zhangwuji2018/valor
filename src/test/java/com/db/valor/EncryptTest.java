@@ -1,17 +1,12 @@
 package com.db.valor;
 
-import com.db.valor.web.dao.Userdao;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.codec.Base64;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.subject.Subject;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * <p>
@@ -28,9 +23,6 @@ public class EncryptTest extends ValorApplicationTests{
 
     @Autowired
     DataSource dataSource;
-
-    @Autowired
-    Userdao userdao;
 
     @Test
     public void testEncryptor() {

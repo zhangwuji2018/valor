@@ -44,14 +44,14 @@ public class MpGeneratorTest {
         mpg.setGlobalConfig(gc);
 
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
+        //strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude("sys_user","sys_role","sys_menu"); // 需要生成的表
+        strategy.setInclude("user","role","permission","user_role","role_permission"); // 需要生成的表
         strategy.setEntityLombokModel(true);
         mpg.setStrategy(strategy);
 
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.db.valor.web");
+        pc.setParent("com.db.valor");
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
@@ -60,7 +60,7 @@ public class MpGeneratorTest {
         mpg.setPackageInfo(pc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://139.224.10.52:3306/valor?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://139.224.10.52:3306/zb-shiro?useUnicode=true&useSSL=false&characterEncoding=utf8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");

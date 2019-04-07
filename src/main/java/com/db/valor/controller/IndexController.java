@@ -1,4 +1,4 @@
-package com.db.valor.web.controller;
+package com.db.valor.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

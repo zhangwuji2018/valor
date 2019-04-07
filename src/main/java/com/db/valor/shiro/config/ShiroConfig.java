@@ -1,10 +1,8 @@
-package com.db.valor.system.config;
+package com.db.valor.shiro.config;
 
-import com.db.valor.system.shiro.realm.UserRealm;
-import net.sf.ehcache.CacheManager;
+import com.db.valor.shiro.realm.UserRealm;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.config.ConfigurationException;
 import org.apache.shiro.io.ResourceUtils;
@@ -80,7 +78,7 @@ public class ShiroConfig {
      * 配置缓存管理器，将EhCache的管理器交给shiro
      * @return EhCacheManager
      */
-    @Bean
+   /* @Bean
     public EhCacheManager ehCacheManager() {
         EhCacheManager ehCacheManager = new EhCacheManager();
         CacheManager cacheManager = CacheManager.getCacheManager("valor");
@@ -90,7 +88,7 @@ public class ShiroConfig {
         }
         ehCacheManager.setCacheManager(cacheManager);
         return ehCacheManager;
-    }
+    }*/
 
     /**
      * 读取ehcache配置文件
@@ -163,7 +161,7 @@ public class ShiroConfig {
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm());
-        securityManager.setCacheManager(ehCacheManager());
+        //securityManager.setCacheManager(ehCacheManager());
         securityManager.setRememberMeManager(cookieRememberMeManager());
         return securityManager;
     }

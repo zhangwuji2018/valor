@@ -1,4 +1,4 @@
-package com.db.valor.system.config;
+package com.db.valor.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,5 @@
-package com.db.valor.common.utils;
+package com.db.valor.utils;
 
-import com.db.valor.web.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -19,8 +18,8 @@ public class ShiroUtil {
         return SecurityUtils.getSubject();
     }
 
-    public static User getCurrentUser() {
-        User user = null;
-        return user;
-    }
+//    public static User getCurrentUser() {
+//        User user = null;
+//        return user;
+//    }
 }

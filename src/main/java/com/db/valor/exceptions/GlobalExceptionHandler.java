@@ -1,10 +1,10 @@
-package com.db.valor.common.exceptions;
+package com.db.valor.exceptions;
 
 import com.baomidou.kaptcha.exception.KaptchaException;
 import com.baomidou.kaptcha.exception.KaptchaIncorrectException;
 import com.baomidou.kaptcha.exception.KaptchaNotFoundException;
 import com.baomidou.kaptcha.exception.KaptchaTimeoutException;
-import com.db.valor.common.JsonResult;
+import com.db.valor.utils.JsonResult;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;

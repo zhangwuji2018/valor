@@ -1,8 +1,8 @@
-package com.db.valor.web.controller;
+package com.db.valor.controller;
 
 import com.baomidou.kaptcha.Kaptcha;
-import com.db.valor.common.JsonResult;
-import com.db.valor.common.exceptions.GlobalExceptionHandler;
+import com.db.valor.utils.JsonResult;
+import com.db.valor.exceptions.GlobalExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
