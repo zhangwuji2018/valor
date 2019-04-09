@@ -1,6 +1,7 @@
 package com.db.valor.controller;
 
 import com.baomidou.kaptcha.Kaptcha;
+import com.db.valor.service.UserService;
 import com.db.valor.utils.JsonResult;
 import com.db.valor.exceptions.GlobalExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +27,9 @@ public class LoginController {
 
     @Autowired
     private Kaptcha kaptcha;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/login")
     public String login(){
@@ -53,6 +57,7 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         // 执行认证
         subject.login(token);
-        return JsonResult.success();
+
+        return JsonResult.success("登录成功");
     }
 }

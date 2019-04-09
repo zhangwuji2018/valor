@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
  * @date 2019/2/28
  */
 @Slf4j
-@MapperScan("com.db.valor.*.dao")
+@MapperScan("com.db.valor.dao")
 @SpringBootApplication
 public class ValorApplication {
 

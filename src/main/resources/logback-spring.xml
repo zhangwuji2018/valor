@@ -4,7 +4,7 @@
     <property name="log.path" value="/valorLog" />
     <property name="log.maxHistory" value="15" />
     <property name="log.pattern"
-              value="%yellow(%d{HH:mm:ss.SSS}) | %highlight(%-5level) ---- %blue([%thread]) | %green(%logger{36}) | %cyan(%msg%n)" />
+              value="%yellow(%d{HH:mm:ss.SSS}) | %highlight(%-5level) ---- %blue([%thread]) | %cyan(%logger{36}) | %green(%msg%n)" />
     <property name="file.pattern"
               value="%d{HH:mm:ss.SSS} %contextName %-5level ---- [%thread]  %logger{36} - %msg%n" />
 

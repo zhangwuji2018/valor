@@ -15,15 +15,24 @@ $(function () {
         var validateCode = $("input[name='validateCode']").val().trim();
         var rememberMe = $("input[name='rememberMe']").is(':checked');
         if (username === "") {
-            layer.alert("请输入用户名！",{icon:5});
+            layer.msg("请输入用户名！",{
+                icon: 2,
+                offset: '30%',
+                time: 2000});
             return false;
         }
         if (password === "") {
-            layer.alert("请输入密码！",{icon:5});
+            layer.msg("请输入密码！",{
+                icon: 2,
+                offset: '30%',
+                time: 2000});
             return false;
         }
         if (validateCode === "") {
-            layer.alert("请输入验证码！",{icon:5});
+            layer.msg("请输入验证码！",{
+                icon: 2,
+                offset: '30%',
+                time: 2000});
             return false;
         }
         $.ajax({
@@ -38,27 +47,28 @@ $(function () {
             dataType: "json",
             success: function (data) {
                 if (data.code === 1) {
-                    location.href = ctx + "index";
+                    layer.msg(data.msg,{
+                        offset: '30%',
+                        time: 800
+                    },function () {
+                        location.href = ctx + "index";
+                    });
                 } else {
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        offset: '30%',
+                        time: 2000
+                    });
                     var url = ctx + "kaptcha/render?data=" +Math.random();
                     $("#imgCode").attr("src",url);
-                    layer.alert(data.msg,{icon:5})
                 }
             }
         });
     });
+
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#login-btn").click();
+        }
+    });
 });
-
-function keyupSearch(e) {
-    // 兼容FF和IE和Opera
-    var theEvent = e || window.event;
-    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-    if (code == 13) {
-        // alert('回车');//具体处理函数
-        $("#login-btn").click();
-        return false;
-    }
-    return true;
-}
-
-document.onkeyup = keyupSearch;

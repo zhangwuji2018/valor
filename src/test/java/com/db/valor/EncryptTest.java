@@ -37,7 +37,7 @@ public class EncryptTest extends ValorApplicationTests{
 
     @Test
     public void testShiroEncrypt() throws Exception {
-        String s = new SimpleHash("SHA-1", "123456", "valor", 1024).toString();
+        String s = new SimpleHash("SHA-1", "123456", "8cd50474d2a3c1e88298e91df8bf6f1c", 1024).toString();
         //System.out.println(s);
         //410d5d47a713efa3309558200d8208c6526e8dde
 //        byte[] decode = Base64.decode("4AvVhmFLUs0KTA3Kprsdag==");

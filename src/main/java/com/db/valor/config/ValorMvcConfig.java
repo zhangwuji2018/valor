@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ValorMvcConfig implements WebMvcConfigurer {
 
-    @Value("${shiro.user.indexUrl}")
+    @Value("${shiro.successUrl}")
     private String indexUrl;
 
     @Override

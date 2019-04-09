@@ -54,6 +54,6 @@ public class GlobalExceptionHandler {
         if (authenticationException instanceof IncorrectCredentialsException) {
             return JsonResult.error("密码错误");
         }
-        return JsonResult.error("用户认证失败");
+        return JsonResult.error("用户名或密码错误");
     }
 }
