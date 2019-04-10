@@ -1,5 +1,9 @@
 package com.db.valor.shiro.realm;
 
+import com.db.valor.entity.User;
+import com.db.valor.service.PermissionService;
+import com.db.valor.service.RoleService;
+import com.db.valor.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

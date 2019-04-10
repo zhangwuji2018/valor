@@ -25,8 +25,8 @@ public interface Permissiondao extends BaseMapper<Permission> {
 
     /**
      * 获取所有的菜单
-     * @param currentUserId 用户id
+     * @param username 用户名称
      * @return
      */
-    List<Permission> getMenusByUserId(Integer currentUserId);
+    List<Permission> getMenusByUsername(String username);
 }

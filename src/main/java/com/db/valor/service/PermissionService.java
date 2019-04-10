@@ -26,5 +26,5 @@ public interface PermissionService extends IService<Permission> {
      * @param currentUserId 用户id
      * @return
      */
-    List<Permission> listAllMenusByUserId(Integer currentUserId);
+    List<Permission> listAllMenusByUsername(String username);
 }

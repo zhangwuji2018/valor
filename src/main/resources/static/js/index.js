@@ -8,7 +8,7 @@ $(function () {
         data:{},
         success: function (data) {
             getMenuData(rootId, data);
-            $("#menu").append(menu);
+            $("#sidebar").append(menu);
         }
     });
     // 根据菜单的主键id生成菜单列表对应的html
@@ -17,7 +17,7 @@ $(function () {
         var childMenuArray = getChildMenu(id, menuArray);
         if (childMenuArray.length > 0) {
             if (menu === '') {
-                menu += '<ul class="sidebar-menu">';
+                menu += '<ul class="sidebar-menu tree" data-widget="tree">';
             } else {
                 menu += '<ul class="treeview-menu">';
             }
@@ -29,9 +29,10 @@ $(function () {
                         '<span>'+childMenuArray[i].name+'</span>' +
                         '<span class="pull-right-container">' +
                         '<i class="fa fa-angle-left pull-right"></i></span> </a>';
+                    getMenuData(childMenuArray[i].id, menuArray);
                 } else {
                     menu += '<li><a href="'+ctx+childMenuArray[i].url.substring(1,childMenuArray[i].url.length)+'">' +
-                        '<i class="'+childMenuArray[i].icon+'"></i> <span>'+childMenuArray[i].name+'</span></a></li>';
+                        '<i class="'+childMenuArray[i].icon+'"></i> <span>'+childMenuArray[i].name+'</span></a>';
                 }
                 menu += '</li>';
             }
@@ -41,7 +42,7 @@ $(function () {
 
     // 根据主键获取id对应的子菜单数组信息
     function getChildMenu(id, menuArray) {
-        var array = new Array();
+        var array = [];
         for(var i in menuArray) {
             if (id === menuArray[i].parentId) {
                 array.push(menuArray[i]);

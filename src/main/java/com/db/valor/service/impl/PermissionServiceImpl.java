@@ -34,7 +34,7 @@ public class PermissionServiceImpl extends ServiceImpl<Permissiondao, Permission
     }
 
     @Override
-    public List<Permission> listAllMenusByUserId(Integer currentUserId) {
-        return permissiondao.getMenusByUserId(currentUserId);
+    public List<Permission> listAllMenusByUsername(String username) {
+        return permissiondao.getMenusByUsername(username);
     }
 }

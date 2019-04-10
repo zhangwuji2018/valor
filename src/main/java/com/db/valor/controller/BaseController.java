@@ -1,6 +1,6 @@
 package com.db.valor.controller;
 
-import com.db.valor.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,18 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  * @author daibing
  * @since 2019/4/9
  */
-
+@Slf4j
 public class BaseController {
     @ModelAttribute(name = "subject")
     protected Subject getSubject() {
         return SecurityUtils.getSubject();
     }
 
-    protected User getCurrentUser() {
-        return ((User) getSubject().getPrincipal());
-    }
-
-    protected Integer getCurrentUserId() {
-        return getCurrentUser().getId();
+    protected String getUsername() {
+        return ((String) getSubject().getPrincipal());
     }
 }

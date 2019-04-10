@@ -39,6 +39,6 @@ public class IndexController extends BaseController{
     @PostMapping("/getMenu")
     @ResponseBody
     public List<Permission> getPermissions() {
-        return permissionService.listAllMenusByUserId(getCurrentUserId());
+        return permissionService.listAllMenusByUsername(getUsername());
     }
 }
