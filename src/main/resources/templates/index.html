@@ -14,13 +14,16 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
-    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
-    <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
-    <script th:src="@{/plugins/adminLte/js/adminlte.min.js}"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-        <div th:replace="fragments/headerNavbar :: navbar"></div>
+        <div th:replace="fragments/topNavbar :: navbar"></div>
     </div>
+
+    <script th:inline="javascript"> var ctx = [[@{/}]]</script>
+    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/plugins/adminLte/js/adminlte.min.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
 </body>
 </html>

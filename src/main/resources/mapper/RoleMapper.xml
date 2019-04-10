@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.db.valor.dao.Roledao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.db.valor.entity.Role">
+        <id column="id" property="id" />
+        <result column="role_id" property="roleId" />
+        <result column="name" property="name" />
+        <result column="description" property="description" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        r.id, r.role_id, r.name, r.description, r.status, r.create_time, r.update_time
+    </sql>
+    <select id="selectRolesByUserId" resultType="com.db.valor.entity.Role">
+      select <include refid="Base_Column_List"/>
+      from role r join user_role ur on r.role_id=ur.role_id join user u on ur.user_id=u.id where u.id=#{id}
+    </select>
+
+</mapper>
