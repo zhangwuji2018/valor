@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -25,6 +26,15 @@ public class PermissionServiceImpl extends ServiceImpl<Permissiondao, Permission
 
     @Override
     public List<String> getPermissionsByUserId(Integer id) {
-        return null;
+        List<Permission> permissions = permissiondao.selectPermissionByUserId(id);
+        List<String> perms = permissions.stream()
+                .map(Permission::getPerms)
+                .distinct().collect(Collectors.toList());
+        return perms;
+    }
+
+    @Override
+    public List<Permission> listAllMenusByUserId(Integer currentUserId) {
+        return permissiondao.getMenusByUserId(currentUserId);
     }
 }

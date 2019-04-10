@@ -20,4 +20,11 @@ public interface PermissionService extends IService<Permission> {
      * @return
      */
     List<String> getPermissionsByUserId(Integer id);
+
+    /**
+     * 查询菜单集合
+     * @param currentUserId 用户id
+     * @return
+     */
+    List<Permission> listAllMenusByUserId(Integer currentUserId);
 }

@@ -4,6 +4,8 @@ import com.db.valor.entity.Permission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -14,5 +16,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface Permissiondao extends BaseMapper<Permission> {
+    /**
+     * 查询所有权限集合
+     * @param id
+     * @return
+     */
+    List<Permission> selectPermissionByUserId(Integer id);
 
+    /**
+     * 获取所有的菜单
+     * @param currentUserId 用户id
+     * @return
+     */
+    List<Permission> getMenusByUserId(Integer currentUserId);
 }
