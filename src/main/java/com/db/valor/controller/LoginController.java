@@ -4,6 +4,7 @@ import com.baomidou.kaptcha.Kaptcha;
 import com.db.valor.exceptions.GlobalExceptionHandler;
 import com.db.valor.service.UserService;
 import com.db.valor.utils.JsonResult;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author daibing
  * @since 2019/3/29
  */
+@Slf4j
 @Controller
 public class LoginController {
 
@@ -59,5 +61,17 @@ public class LoginController {
         subject.login(token);
 
         return JsonResult.success("登录成功");
+    }
+
+    /**
+     * 退出登陆
+     * @return
+     */
+    @PostMapping("/logout")
+    @ResponseBody
+    public JsonResult logout() {
+        log.info("进入退出控制器");
+        SecurityUtils.getSubject().logout();
+        return JsonResult.success("退出成功");
     }
 }

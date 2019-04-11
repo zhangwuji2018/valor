@@ -1,3 +1,6 @@
+/*
+ * 初始化首页js
+ */
 $(function () {
     var menu = '';
     // 根节点主键(一级菜单)
@@ -50,4 +53,16 @@ $(function () {
         }
         return array;
     }
+    // 退出
+    $("#loginout-btn").click(function () {
+        Valor.confirm("确认退出！！！",function () {
+            Valor.sendAjax(ctx + "logout",{},function (data) {
+                if (data.code === 1) {
+                    window.location.href = ctx +"login";
+                } else {
+                    Valor.errorMsg(data.msg);
+                }
+            })
+        })
+    });
 });

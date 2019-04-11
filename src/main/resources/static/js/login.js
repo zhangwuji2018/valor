@@ -1,3 +1,6 @@
+/*
+* 登陆页面js
+* */
 $(function () {
     $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
@@ -48,8 +51,9 @@ $(function () {
             success: function (data) {
                 if (data.code === 1) {
                     layer.msg(data.msg,{
+                        icon: 1,
                         offset: '30%',
-                        time: 800
+                        time: 1000
                     },function () {
                         location.href = ctx + "index";
                     });

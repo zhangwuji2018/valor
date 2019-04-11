@@ -1,56 +1,49 @@
 <!--顶部-->
 <header th:fragment="navbar" class="main-header">
-    <!-- Logo -->
+    <!--左侧logo-->
     <a th:href="@{/index}" class="logo">
+        <!--缩放显示的logo-->
+        <span class="logo-mini"><b>V</b>or</span>
+        <!--正常显示的logo-->
         <span class="logo-lg"><b>Valor</b></span>
     </a>
-    <!-- Header Navbar -->
+    <!--右侧导航栏-->
     <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
+        <!--收缩按钮，收起左侧面板-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-        <!-- Navbar Right Menu -->
+        <!--导航栏-->
         <div class="navbar-custom-menu">
+            <!--每一个li元素都一个面板-->
             <ul class="nav navbar-nav">
+                <!--用户界面-->
                 <li class="dropdown user user-menu">
-                    <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <!-- The user image in the navbar-->
                         <img th:src="@{/images/head.jpg}" class="user-image" alt="User Image">
                         <span class="hidden-xs" th:text="${subject.principal}"></span>
                     </a>
+                    <!--点击下拉面板-->
                     <ul class="dropdown-menu">
-                        <!-- User image -->
                         <li class="user-header">
                             <img th:src="@{/images/head.jpg}" class="img-circle" alt="User Image">
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                [[${subject.principal}]]
                             </p>
                         </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </li>
-                        <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user-plus"></i> 个人资料</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="#" id="loginout-btn" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>退出</a>
                             </div>
                         </li>
                     </ul>
+                </li>
+                <!--用于切换右侧皮肤面板-->
+                <li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>

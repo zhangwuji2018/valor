@@ -81,8 +81,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/plugins/**", "anon");
         filterChainDefinitionMap.put("/kaptcha/**", "anon");
         filterChainDefinitionMap.put("/druid/**", "anon");
-        // 退出 logout地址，shiro去清除session
-        filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
         filterChainDefinitionMap.put("/login", "anon");
         // 除此之外，所有的都要经过认证

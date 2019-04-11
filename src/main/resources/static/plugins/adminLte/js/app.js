@@ -1,4 +1,4 @@
-/**
+ /**
  * AdminLTE Demo Menu
  * ------------------
  * You should not use this file in production.
@@ -187,7 +187,7 @@ $(function () {
     var $demoSettings = $('<div />')
 
     // Layout options
-    $demoSettings.append(
+    /*$demoSettings.append(
         '<h4 class="control-sidebar-heading">'
         + 'Layout Options'
         + '</h4>'
@@ -239,7 +239,7 @@ $(function () {
         + '</label>'
         + '<p>Toggle between dark and light skins for the right sidebar</p>'
         + '</div>'
-    )
+    )*/
     var $skinsList = $('<ul />', {'class': 'list-unstyled clearfix'})
 
     // Dark sidebar skins
@@ -342,7 +342,7 @@ $(function () {
                 + '<p class="text-center no-margin" style="font-size: 12px">Yellow Light</p>')
     $skinsList.append($skinYellowLight)
 
-    $demoSettings.append('<h4 class="control-sidebar-heading">Skins</h4>')
+    $demoSettings.append('<h4 class="control-sidebar-heading">多彩皮肤</h4>')
     $demoSettings.append($skinsList)
 
     $tabPane.append($demoSettings)
