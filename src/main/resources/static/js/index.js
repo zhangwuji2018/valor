@@ -34,7 +34,7 @@ $(function () {
                         '<i class="fa fa-angle-left pull-right"></i></span> </a>';
                     getMenuData(childMenuArray[i].id, menuArray);
                 } else {
-                    menu += '<li><a href="'+ctx+childMenuArray[i].url.substring(1,childMenuArray[i].url.length)+'">' +
+                    menu += '<li><a href="#'+ctx+childMenuArray[i].url.substring(1,childMenuArray[i].url.length)+'">' +
                         '<i class="'+childMenuArray[i].icon+'"></i> <span>'+childMenuArray[i].name+'</span></a>';
                 }
                 menu += '</li>';
