@@ -4,9 +4,13 @@ import com.db.valor.shiro.realm.UserRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
+import org.apache.shiro.codec.Base64;
+import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
+import org.apache.shiro.web.servlet.Cookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -63,10 +67,23 @@ public class ShiroConfig {
     }
 
     /**
-     * shiro过滤器配置
+     * 配置RememberMeManager
      *
-     * @param securityManager 安全管理器
-     * @return ShiroFilterFactoryBean
+     * @param rememberMeCookieTemplate cookie模板
+     * @return
+     */
+    @Bean
+    public RememberMeManager rememberMeManager(Cookie rememberMeCookieTemplate) {
+        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+        cookieRememberMeManager.setCookie(rememberMeCookieTemplate);
+        // cookie加密密钥,不配置重启都会重新生成一对密钥,控制台会报错
+        cookieRememberMeManager.setCipherKey(Base64.decode("6ZmI6I2j5Y+R5aSn5ZOlAA=="));
+        return cookieRememberMeManager;
+    }
+
+    /**
+     * shiro过滤器配置
+     * @return ShiroFilterChainDefinition
      */
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
